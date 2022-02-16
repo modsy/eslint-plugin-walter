@@ -158,7 +158,6 @@ module.exports = {
                                         }
                                     };
                                 }
-                                console.log(JSON.stringify(reportContext));
                                 context.report({
                                     ...reportContext,
                                     message: "Avoid using 'constructor.name' pattern. Code deployment involves minification, which mangles such functionality.",
