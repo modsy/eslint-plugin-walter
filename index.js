@@ -48,7 +48,7 @@ module.exports = {
 
                             // compute the maximum length of consecutive '/' or '*' characters
                             const txt = comment.value;
-                            
+
                             let classification = txt.split('').map(classifyChar);
                             if (classification.some(c => c === 'X')) {
                                 return;
@@ -137,7 +137,8 @@ module.exports = {
 
                         const { text } = sourceCode;
 
-                        getOccurrences(text, 'constructor.name')
+                        const searchString = 'constructor.name';
+                        getOccurrences(text, searchString)
                             .map((index) => ({
                                 index,
                                 node: sourceCode.getNodeByRangeIndex(index),
@@ -154,7 +155,7 @@ module.exports = {
                                              * TODO: This end location seems to have no effect:
                                              * https://eslint.org/docs/developer-guide/working-with-rules#contextreport
                                              */
-                                            end: sourceCode.getLocFromIndex(index + 16)
+                                            end: sourceCode.getLocFromIndex(index + searchString.length)
                                         }
                                     };
                                 }
